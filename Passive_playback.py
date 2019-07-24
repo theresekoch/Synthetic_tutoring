@@ -63,13 +63,15 @@ def morning_session():
     #generates the times at which the songs will be played
     all_times=generate_times(120,10)
     print("Starting morning session... "+str(datetime.now().time())+'\n')
+    counter = 1
     for x in all_times:
         #waits for time specified in all_times to pass, then plays song and records it
             #in dailyFile
         while x > time.time():
             time.sleep(0.5)
-        print('[' + x + ']'+ str(datetime.now().time()) + '\n')
+        print('[' + str(counter) + '] '+ str(datetime.now().time()) + '\n')
         play_song(song, dailyFile)
+        counter=counter+1
     dailyFile.close()
     print("Morning session complete " + '\n')
     
@@ -90,11 +92,13 @@ def afternoon_session():
     dailyFile.write('Passive Playbacks   ' + song + '    ' + str(datetime.now().time())+'\n')
     all_times=generate_times(120,10)
     print("Starting afternoon session... "+str(datetime.now().time())+'\n')
+    counter=1
     for x in all_times:
         while x > time.time():
             time.sleep(0.5)
-        print('[' + x + ']'+ str(datetime.now().time()) + '\n')
+        print('[' + str(counter) + '] '+ str(datetime.now().time()) + '\n')
         play_song(song, dailyFile)
+        counter=counter+1
     dailyFile.close()
     print("Afternoon session complete."+'\n')
 
